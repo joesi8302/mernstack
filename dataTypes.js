@@ -88,3 +88,6 @@ console.log(data_name)
 var symbol_1 = Symbol("New Value of my choice")
 console.log(symbol_1)
 console.log("Data Type ", typeof symbol_1)
+
+
+
