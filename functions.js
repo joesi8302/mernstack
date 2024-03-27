@@ -25,6 +25,7 @@ Name("Hello") // This executes in a global scope
                 // the "this" keyword is applied here global "this" scope
                 // this - (global object, execution context (NOT CLASS))
                 // execution context is what is available for us to use like this.session is part of the execution context
+                // this is a reserved keyword used to define the scope and execution context or dynamic context for js object
 
 
 session = "MERN STACK"
@@ -39,6 +40,7 @@ funcThis("yes")
 
 //----------------------------------------------------------------------
 // Function Expression - When we assign a function definition to a var, it is termed as a FUNCTION EXPRESSION
+// console.log(validUser(1,2)); // this will give an error because we are trying to run an undefined variable
 
 var validUser = function (a, b){
     return a + b
@@ -64,9 +66,9 @@ console.log(validUser(1,2));
 // This is very common when creating libraries
 
 function Area(length, width, radius){
-    this.length = length,
-    this.width = width,
-    this.radius = radius,
+    this.length = length // this is a reserved keyword used to define the scope and execution context or dynamic context for js object
+    this.width = width  // since we didnt put var this.lenth or width. we are attaching this specficially to the Area function if we did put var, it would be an independent variable
+    this.radius = radius // any dynamic value should be this.val
 
     this.rectangle = function (){
         return this.length * this.width
@@ -79,7 +81,7 @@ function Area(length, width, radius){
     }
 }
 
-console.log("Length",length)
+//console.log("Length",length)   THIS will give an error saying there is no length defined. as length is tied to the constructor function context
 
 var areaObj = new Area(2,5,10) // initialized as constructor
 
