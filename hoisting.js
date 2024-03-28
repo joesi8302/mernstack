@@ -14,7 +14,7 @@ console.log(PrintName("wat")) // can be executed
 
 var myVar = "assingned var"
 
-myVar = function (param){
+myVar = function (param){   // These cannot be hoisted
     console.log(param)
 }
 
