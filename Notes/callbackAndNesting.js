@@ -46,11 +46,14 @@ function A(a){
 var objA = A(5); // returns function B
 var objB = objA(10); // returns function C
 var objC = objB(15); // returns function D
-var result = objC(20); // returns function a + b + c + d + number1
+var result = objC(20); // returns a + b + c + d + number1
 
-console.log(result);
+console.log(result); // will give us 70
 
 
 // chain execution
 var result2 = A(5)(10)(15)(30);
-console.log(result2);
+console.log(result2); // will give us 80
+
+
+// MULTITASKING IS ACHIEVED THROUGH THESE CALLBACK FUNCTIONS

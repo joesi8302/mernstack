@@ -47,11 +47,12 @@ var PrintData = function(param1, param2, param3, param4){
 
 PrintData("one", "two", "three", "four")
 
-var PrintData = function(param1, param2, param3){
-    console.log("1 Param:" , param1, "2 Param:" , param2, "3 Param:" , param3, "4 Param:" , param4)
-};
+// var PrintData = function(param1, param2, param3){  // THIS WILL BE THE MAIN PrintData if defined
+//     console.log("1 Param:" , param1, "2 Param:" , param2, "3 Param:" , param3, "4 Param:" , param4)
+// };
+// PrintData("one", "two", "three")
 
-PrintData("one", "two", "three")
+
 
 // This works because we are specifically defining the PrintData
 // hoisting is not avilabile for function expression
