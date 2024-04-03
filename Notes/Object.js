@@ -91,3 +91,27 @@ console.log(Delivery)
 
 //create one object with name person, and inherit it to Student and create two new properties and one new method
 //pls use both ways of inheritance
+
+var Person = {
+    name: "SomeName"
+}
+
+var Student = Object.create(Person);
+
+Student.ID = 1234
+Student.School = "SomeSchool"
+Student.Hello = function() {
+    console.log(Student.School)
+}
+
+console.log(Person.name)
+console.log(Student.Hello());
+
+var Student2 = new Object(Person);
+Student2.ID2 = 5678
+Student2.School2 = "SomeOtherSchool"
+Student2.Hello2 = function() {
+    console.log(Student2.School2)
+}
+
+console.log(Person.Hello2())
