@@ -50,7 +50,38 @@ GetDetails.apply(user2, seesionList)
 //just in case we dont want to pass any context but we need to set parameters as array
 GetDetails.apply(null, seesionList)
 
+
+
+// The difference is that apply lets you invoke the function with arguments as an array; 
+// call requires the parameters be listed explicitly.
+
+
 //Create two examples to set the context using student and list of subject attended by students, 
 //it should use call and apply do describe both the cases
 
 
+var student = { name: "Matthew", age: 24, classes: "Javascript"}
+var student2 = { name: "David", age: 24 , classes: "OOJS"}
+
+function getSchedule(comment){
+    console.log(comment)
+    console.log(this.name, this.age, this.classes)
+}
+
+function GetSchedule(concept, class1, class2, class3, class4, class5){
+    console.log (`Call Extention ${concept}`) 
+
+    console.log(`${class1} ${class2} ${class3} ${class4} ${class5}`)
+
+    console.log(`The Student details are as shown below
+                 Name is - ${this.name}
+                 Age is  -  ${this.age}
+                 Classes are - ${this.classes}`)
+}
+
+var classList = ["Math","Social Studies","Band","Science","English","PE"];
+
+console.log("call")
+GetSchedule.call(student, classList);
+console.log("apply")
+GetSchedule.apply(student, classList);
