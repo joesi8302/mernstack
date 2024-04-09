@@ -57,6 +57,7 @@ console.log(my_var) // we wouild think it would be undefined or Not visible due 
     // User = User2 // This is not allowed as this is an Assignment to constant variable
 
     User.session = "ES6 Variables" // updating the value of reference i.e = session
+    User.newStuff = "123" // can add more references within an object
     console.log(User)
 
 }
@@ -72,7 +73,7 @@ for (var index = 0; index < 5; index++){
 }
 console.log("breaking condition " + index)
 
-
+// USING LET 
 for (let index1 = 0; index1 < 5; index1++){
     
     setTimeout(() => {
@@ -81,3 +82,9 @@ for (let index1 = 0; index1 < 5; index1++){
 
 }
 // console.log("breaking condition " + index1)
+
+var mylet_var = "New Value to Var"
+
+let mylet_var = "New Value to Let"
+
+console.log(mylet_var) // will give an error because Re-declaration of LET is NOT allowed
