@@ -6,7 +6,7 @@ function Sum(a,b){
 
 console.log(Sum(10,9)); // 19
 console.log(Sum(9)); // NaN
-console.log(Sum()); // NaN 
+console.log(Sum()); // NaN  because we are trying to add two undefined numbers
 
 
 function Sum1(a = 0,b = 0){ // can initialize to zero so we do not get such errors
