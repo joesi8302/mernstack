@@ -36,7 +36,7 @@
     }
 
     // let Session = User.Session;  // This is possible
-    let {Name = "David N", Session, TotalMarks} = User 
+    let {Name = "David N", Session, TotalMarks} = User //This will do the same thing but in a group 
 
     console.log(Name)
     console.log(Session)
