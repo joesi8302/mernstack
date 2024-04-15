@@ -1,0 +1,190 @@
+// // // 1. How to preserve the immutability on my heroes list? Solve below problems using the same
+// // // a. Get heroes who are not evils
+// // // b. Print Unique family names
+// // // c. Print Hero Names from given objects, and append sir in each of them before printing
+// // // d. Do we have any hero in Marvel Family who is not evil
+
+
+// // const heroes = [
+// //   { name: 'Wolverine',      family: 'Marvel',    isEvil: false },
+// //   { name: 'Deadpool',       family: 'Marvel',    isEvil: false },
+// //   { name: 'Magneto',        family: 'Marvel',    isEvil: true  },
+// //   { name: 'Charles Xavier', family: 'Marvel',    isEvil: false },
+// //   { name: 'Batman',         family: 'DC Comics', isEvil: false },
+// //   { name: 'Harley Quinn',   family: 'DC Comics', isEvil: true  },
+// //   { name: 'Legolas',        family: 'Tolkien',   isEvil: false },
+// //   { name: 'Gandalf',        family: 'Tolkien',   isEvil: false },
+// //   { name: 'Saruman',        family: 'Tolkien',   isEvil: true  }
+// // ]
+
+
+// // //1.a)
+// // let getHeroNotEvil = heroes.filter(hero => hero.isEvil == false)
+// // console.log(getHeroNotEvil);
+
+// // //1.b)
+// // let getHeroUnique = new Set();
+// // for(const key in heroes){
+// //     const hero = heroes[key]
+// //     getHeroUnique.add(hero.family)
+// // }
+// // console.log(getHeroUnique)
+
+// // //1.c)
+// // let getSirHero = heroes.map(hero => {
+// //     return "Sir " + hero.name
+// // })
+// // console.log(getSirHero);
+
+
+// // //1.d)
+// // let getMarvelNotEvil = heroes.filter(hero => hero.family == 'Marvel' && hero.isEvil == false)
+// // console.log(getMarvelNotEvil)
+
+
+
+// // //2. Use the spread and rest operator to create a function which can multiple numbers from 1...n (n is the number of choice)
+// // //   also need to print students of the session using same example
+
+
+// function mult(...numbers1) {
+//     let total = 1;
+//     for (const num of numbers1) {
+//       total *= num;
+//     }
+//     return total;
+//   }
+// console.log(mult(1,2,3,4))
+
+// // //3. Print the last name through destructuring and add a contact number:9119119110 as well
+// // const person = {
+// //     userDetails :{
+// //         first: "FirstName",
+// //         last: "LastName"
+// //     }
+// // }
+
+// // let {last , ContactNumber = 9119119110} = person.userDetails
+// // console.log(last)
+// // console.log(ContactNumber)
+
+// // //4. Give me an example of const data manipulation
+
+// // const User = {
+// //     something: "aslkdjasl"
+// // }
+// // console.log(User.something)
+// // User.something = "new something"
+// // console.log(User.something)
+
+// // //5. What is the difference between for-of and for-in show with examples
+// // // For-of is mainly used for arrays
+// // // For-in is mainly used of objects
+
+// // let ofObject = {a: "asd" , b: "asdsad", c: 123}
+// // for(const key in ofObject){
+// //     const item = ofObject[key]
+// //     console.log(item)
+// // }
+
+// // let arr = ["123", "asdas", 115113]
+// // for(const item of arr){
+// //     console.log(item)
+// // }
+
+
+// // //6. Give me an example of bind and write its usage, comparison with arrow function
+
+// // var exampleBind = {
+// //     Name: "Joe",
+// //     LastName: "Si",
+// //     Getinfo : function (params){
+
+// //         setTimeout(function (){
+// //             console.log(console.log(`Before bind: ${this.Name} ${this.LastName}`)); 
+// //         },2000)
+
+// //         setTimeout(function (){
+// //             console.log(console.log(`With bind: ${this.Name} ${this.LastName}`)); 
+// //         }.bind(exampleBind),2000)
+// //     }
+// // }
+
+// // console.log(exampleBind.Getinfo());
+
+// // //7. Create an example showing usage of event loop in concurrent execution cycle
+
+// // setTimeout(function (){
+// //     console.log("1 Delayed Execution") 
+
+// //     setTimeout(function (){
+// //         console.log("2 Delayed Execution") 
+// //     },0)
+// // }, 3000)
+
+// // setTimeout(function (){
+// //     console.log("3 Delayed Execution")
+// // }, 3000)
+
+// // setTimeout(function (){
+// //     console.log("4 Delayed Execution") 
+// // }, 3000)
+
+
+
+
+// // //8. create an example showing usage of short hand and default param.
+
+// let one = "One is Here"
+// let two = "two is Here"
+// let three = "three is Here"
+// let four
+// let numbers ={
+//     one,
+//     two,
+//     three,
+//     four //default param is undefined
+// }
+// console.log(numbers)
+
+
+// // //9. Create two objects with some properties and merge them using Object method and ES6 way
+
+// let person2 = {name: "Joe"}
+// let age = {age : 123}
+
+// let combine= Object.assign(person2,age)
+// let combineES6 = {...person2, ...age}
+
+// console.log(combine)
+// console.log(combineES6)
+
+// // //10. Give me an example of call and apply each with it's usage
+
+// var firstUser = {
+//     name: "joe",
+//     age: 123,
+//     classes: ["math", "science'"]
+// }
+
+// var secondUser = {
+//     name: "matthew",
+//     age: 254
+// }
+
+// function details(){
+//     console.log(this.name, this.age)
+// }
+
+// function getClass(class1, class2, class3){
+//     console.log(this.name, this.age)
+//     console.log(`${class1} ${class2} ${class3}`)
+// }
+// var classList = ["Science","English","PE"];
+// var classList2 = ["Math","Social Studies","Band"];
+
+// details.call(firstUser)
+// details.call(secondUser)
+
+// getClass.apply(firstUser,classList)
+// getClass.apply(secondUser,classList2)
