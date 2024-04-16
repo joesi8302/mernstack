@@ -35,3 +35,6 @@ console.log("Animal Sound refers with 3 " + AnimalSoundES6) // {} toString() -> 
 console.log("Animal Sound refers with 4 " + JSON.stringify(AnimalSoundES6)) // Converts the object into value of strings 
 
 console.log("Animal Sound refers with 5 " , AnimalSoundES6) // Converts the object into value of strings 
+
+
+module.exports = AnimalSoundES6;
