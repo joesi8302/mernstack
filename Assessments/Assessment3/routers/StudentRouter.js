@@ -19,6 +19,7 @@ studentRouter.get('/getStudentDetails', function (req, res){
 
     let fs = require("fs")
 
-    let writerStream = fs.createWriteStream("studentInfo","utf8")
+    let writerStream = fs.createWriteStream("studentInfo.txt","utf8")
     writerStream.write(JSON.stringify(studentDetails))
+    writerStream.write("\nMY NAME IS "+studentDetails.name)
 })
