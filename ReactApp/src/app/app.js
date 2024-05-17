@@ -1,5 +1,4 @@
 import React , {Component} from "react";
-import "./app.css"
 import "./app1.css"
 // import TestComponent from "./CommonComponent/test";
 import Home from "./CommonComponent/HomeComponent"
@@ -19,14 +18,14 @@ export default class ApplicationComponent extends Component{
 
         //define the state and initialize the state
         this.state = {
-            name: "Joe!!!",
-            name2: "ANOTHER"
+            // name: 
         }
     }
 
-    updateName = (evt)=>{
+    //the parameter will be accepted here when the function... 
+    updateName = (value)=>{
 
-        alert("Name is UPDATING")
+        // alert("Name is UPDATING")
         ////////////////////////////////////////////////////////////////
         // DO NOT DO THIS WAY TO CHANGE NAME
         // let nameElem = document.getElementById("name_element")
@@ -37,14 +36,14 @@ export default class ApplicationComponent extends Component{
         //update state to create new virtual dom using setState - API
 
         this.setState({
-            name: "David",
-            name2: "ANOTHER"
+            name: value
         })
 
         // this.state.name = "asd"
         // console.log(this.state.name)
 
-        evt.preventDefault()
+        // evt.preventDefault()
+
     }
     
     render(){
@@ -70,10 +69,15 @@ export default class ApplicationComponent extends Component{
             // </div>
             <Router>
                 <div className="topdiv">
-                <Header/>
+                <b>userName: {this.state.name}</b>
+                <Header userName={this.state.name}/>
+
                 <Routes>
-                    <Route path="/" element={<Home  parentName={this.state.name}/>}/>
-                    <Route path="home" element={<Home  parentName={this.state.name2}/>}/>
+                    <Route path="/" element={<Home  parentName={this.state.name} 
+                            updateNameInParent={this.updateName} />}/>
+                    <Route path="home" element={<Home  parentName={this.state.name}
+                            updateNameInParent={this.updateName}/>}/> 
+                            {/*  this.props.updateNameInParent(value) */}
                     <Route path="about" element={<About />}/>
                     <Route path="about/:id" element={<About />}/>
                     <Route path="*" element={<NotFound />}/>                    

@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-let Header = () =>{
+let Header = (props) =>{
     return(
         <>
             <h2>Header Component</h2>
+            <h3>{props.parentName}</h3>
                 <NavLink to="/home"  className="button" activeclassname="true"> Home </NavLink>
                 <NavLink to="/user"  className="button" activeclassname="true"> Login </NavLink>
                 <NavLink to="/about"  className="button" activeclassname="true"> About </NavLink>

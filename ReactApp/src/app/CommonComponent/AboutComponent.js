@@ -1,16 +1,28 @@
-import React from "react"
+import React, {useState} from "react"
 import { useParams, useNavigate } from "react-router-dom";
 
 //a functional component using arrow function
 let About = ()=>{
     let params = useParams(); 
     let param = params && params["id"] ? params["id"]: "No Params"; 
+
+    // this.state = {userName : "Joe Si"}
+    // this.setState({userName: "Suyash"})
+
+
+    // using functional hook - useState is a replacement of setState and State
+    let [userName, setUserName] = useState("Joe Si!")  // This is similar to the constructor in component classes
+    let [userAge, setUserAge] = useState(20);
+
+
     
-    //first hook that we are using in application
-    let goToHome = useNavigate(); //helps to create route table on the fly and intercepted by BrowserRouter
+    //first hook that we are using in application  
+    let goToHome = useNavigate(); //helps to create route table on the fly and intercepted by BrowserRouter  (THIS IS A HOOK: useNavigate)
 
     let onGoToHomeClick = (evt)=>{
-        goToHome("/home");
+        // goToHome("/home");
+
+        setUserName("Suyash")
         
         evt.preventDefault();//it stops the default behaviour like event propagation
     }
@@ -32,6 +44,7 @@ let About = ()=>{
                         onClick={onGoToHomeClick} 
                         >Go To Home
                 </button>
+                <h4>{userName}</h4>
         </div>
     )
 }

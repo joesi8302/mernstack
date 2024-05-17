@@ -24,6 +24,9 @@
 // bundler, mintifaciton, etc  (webpack will do all of this PLUS HOSTING)
 
 
+// TO INSTALL WEBPACK
+//npm i webpack webpack-cli webpack-dev-server -D
+
 var _dyn = _dyn1 = _dyn2 = _dyn3 = _dyn4 = "lorum lipsum"
 
 console.log(_dyn)
