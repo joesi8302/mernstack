@@ -1,0 +1,47 @@
+
+/* css class */
+.topdiv{
+    border: 2px red solid;
+}
+.topdiv2{
+    border: 10px blue solid
+}
+
+/* tag/element based css */
+h4{
+    color: brown;
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* id based css (usually not used) */
+#name_element{
+    color: rgb(3, 102, 141);
+    font-weight: 700;
+    font-style: oblique;
+    border-radius: 5%;
+    border: 5px solid gray;
+}
+
+h1{
+    font-style: italic;
+    font-weight: bolder;
+    font-size: 100px;
+}
+
+.button{
+    padding: 5px;
+    text-align: center;
+    background-color: rgb(255, 196, 0);
+    border: 1px solid red;
+    border-radius: 5%;
+    margin: 10px;
+}
+
+.patty{
+    
+}
+
+.active{
+    background-color: aquamarine;
+}

@@ -7,6 +7,14 @@ import Header from "./CommonComponent/HeaderComponent"
 import About from "./CommonComponent/AboutComponent"
 import NotFound from "./CommonComponent/NotFoundComponent";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import UserComponent from "./Application/User/UserContainer";
+import UserHook from "./Application/User/UserHookComponent";
+import HobbyContainer from "./Application/User/HobbyContainer";
+import HobbyHook from "./Application/User/HobbyHookComponent";
+import ProductHook from "./Application/Product/ProductHookComponent"
+import CartHook from "./Application/Cart/CartHookComponent";
+import CheckoutHook from "./Application/Cart/CheckoutComponent";
+
 
 export default class ApplicationComponent extends Component{
 
@@ -18,7 +26,7 @@ export default class ApplicationComponent extends Component{
 
         //define the state and initialize the state
         this.state = {
-            // name: 
+            // name: "JORE" 
         }
     }
 
@@ -69,7 +77,7 @@ export default class ApplicationComponent extends Component{
             // </div>
             <Router>
                 <div className="topdiv">
-                <b>userName: {this.state.name}</b>
+                {/* <b>userName: {this.state.name}</b> */}
                 <Header userName={this.state.name}/>
 
                 <Routes>
@@ -78,6 +86,13 @@ export default class ApplicationComponent extends Component{
                     <Route path="home" element={<Home  parentName={this.state.name}
                             updateNameInParent={this.updateName}/>}/> 
                             {/*  this.props.updateNameInParent(value) */}
+                    {/* <Route path="user" element={<UserComponent/>}/> */}
+                    <Route path="user" element={<UserHook/>}/>
+                    {/* <Route path="hobby" element={<HobbyContainer/>}/> */}
+                    <Route path="hobby" element={<HobbyHook/>}/>
+                    <Route path="product" element={<ProductHook/>}/>
+                    <Route path="products" element={<CartHook/>}/>
+                    <Route path="checkout" element={<CheckoutHook/>}/>
                     <Route path="about" element={<About />}/>
                     <Route path="about/:id" element={<About />}/>
                     <Route path="*" element={<NotFound />}/>                    

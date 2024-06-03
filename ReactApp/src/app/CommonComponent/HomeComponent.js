@@ -53,9 +53,9 @@ export default class Home extends PureComponent{
     componentDidMount(){
         // Here we can access the html and make calls to server API here to pull the data
 
-        setTimeout( () => { 
-            this.address.current.value = "New name with reference"  // Here we are directly affecting the html, however, it will not be saved after leaving that page
-        },5000)
+        // setTimeout( () => { 
+        //     this.address.current.value = "New name with reference"  // Here we are directly affecting the html, however, it will not be saved after leaving that page
+        // },5000)
 
     }
 
@@ -64,8 +64,8 @@ export default class Home extends PureComponent{
     componentWillUnmount(){  
         // any api subscriptions, loops should be stopped here as this data may create a mess
         
-        clearInterval(this.incrementAgeLoop)
-        console.log("Component Will Unmount Was called")
+        // clearInterval(this.incrementAgeLoop)
+        // console.log("Component Will Unmount Was called")
         
 
         //NEED TO LOOK AT RECORDING TO SEE THE UNMOUNTING / DESTRUCTION PART
@@ -185,11 +185,28 @@ export default class Home extends PureComponent{
         console.log("Render Method is called")
         return(
             <>
-                <h1>Home Component</h1>
-                <h2>User Age is {this.state.age}</h2>
+
+                <div className={"loadimage form"} >
+                    <h1>{this.state.title}</h1>
+                    <b className="feature">{"Product Feature's :"}</b>
+                    <ul>                     
+                        <li>Sign up new users</li>
+                        <li>Login existing users.</li>                
+                        <li>Allow user's to add to cart.</li>
+                        <li>Save the user's cart.</li>
+                        <li>Checkout and pay for items.</li>
+                        <li>Allow users to cancel the order.</li>
+                        <li>Allow users to reorder the cart.</li>
+                        <li>Add products/items to create product collection.</li>
+                        <li>Allow users to give ratings to each product.</li>
+                        <li>Have notifications on top right with logout.</li>
+                    </ul>
+                </div>
+                {/* <h1>Home Component</h1>
+                <h2>User Age is {this.state.age}</h2> */}
 
                 {/* Controlled way of creating components - state directly couple with changes */}
-                <div className="form col-md-12">
+                {/* <div className="form col-md-12">
                     <div className="form-control">
                         <div className="col-md-3">
                             <b>User Name</b>
@@ -203,15 +220,15 @@ export default class Home extends PureComponent{
                         <button className={"form-control btn btn-primary col-md-1"} 
                         onClick={this.updateName} 
                         >Update Name to Age
-                        </button>
+                        </button> */}
                         
 
-                    </div>
-                    {this.props.footer}
+                    {/* </div>
+                    {this.props.footer} */}
                     {/* uncontrolled component using reference element */}
                     {/* <input type="text" ref={this.address}></input> */}
                     {/* These are uncontrolled because it is not attached to the state */}
-                    <form className="form" action="api/loginuser" method="post" onSubmit={this.formSubmit}>
+                    {/* <form className="form" action="api/loginuser" method="post" onSubmit={this.formSubmit}>
                         <b>Address (Uncontrolled Component)</b>
                         <input type="text" placeholder={"Default User Address"} 
                             ref={this.address} maxLength={20}></input>
@@ -225,7 +242,7 @@ export default class Home extends PureComponent{
                     <label>RefAddress: {this.state.refAddress}</label>
                     <br></br>
                     <label>RefAge: {this.state.refAge}</label>
-                </div>
+                </div> */}
             </>
         )
     }
@@ -236,9 +253,9 @@ export default class Home extends PureComponent{
 //     parentName: "Joe Si"
 // }
 
-Home.propTypes = {
-    parentName : PropTypes.string.isRequired
-}
+// Home.propTypes = {
+//     parentName : PropTypes.string.isRequired
+// }
 
 //class component 
 //life cycle methods

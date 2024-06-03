@@ -53,3 +53,13 @@ header.innerText = "This is the new header"
 
 // Destruction life cycle
     
+
+
+
+//CreateBrowserRouter and BrowserRouter
+
+//redux -
+// store, reducer, actions, dispatcher
+
+//react-redux -
+// api's to read store - <mapsStateToProps, mapDispatchToProps> hooks <useSelector, useDispatch>

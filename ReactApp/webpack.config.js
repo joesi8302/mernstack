@@ -15,7 +15,7 @@ config = {
     },
     // webpack 5 comes with devServer which loads in development mode
     devServer:{
-        port: 9000,
+        port: 9090,
         historyApiFallback: true // localhost:9090/user
     },
     // Rules of how webpack will take out files, compile & bundle them for the browswer
