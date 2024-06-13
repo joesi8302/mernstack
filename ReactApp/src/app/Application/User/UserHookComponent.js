@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SaveUserToDB, SaveUserToDBUsingFetch } from "../../../state/User/userAction";
 import HobbyComponent from "./HobbyContainer";
+import { getUserCart } from "../../../state/Cart/cartAction";
 // useState - to create state for each option
 // useRef - initialize with store/reducer data and then allow to update
 
@@ -36,6 +37,7 @@ let UserHook = (props)=>{
         }
         //dispatchToDB(SaveUserToDB(newUser))
         dispatchToDB(SaveUserToDBUsingFetch(newUser))
+
         evt.preventDefault();
     }
 
@@ -56,7 +58,7 @@ let UserHook = (props)=>{
     useEffect(()=>{
         console.log("Re render happend")
 
-        sessionName.current.value = User.userName
+        // sessionName.current.value = User.userName
     
         //componentWillUnmount
         return ()=>{
@@ -66,7 +68,7 @@ let UserHook = (props)=>{
     },[]) //if we pass an object to initialize it works as componentDidMount, and executes in create Lifecyle, else works as shouldComponent Update
 
     let readFormData = (evt)=>{
-        alert(sessionName.current.value)
+        // alert(sessionName.current.value)
         //can be dispatched data back to the store or db
         evt.preventDefault()
     }
@@ -107,8 +109,8 @@ let UserHook = (props)=>{
                 </div>
             </section>
 
-        {/* uncontrolled way by using ref keyword */}
-            <form className={"form col-md-10 userHook"} onSubmit={readFormData}>                
+        {/* uncontrolled way by using ref keyword */} 
+            {/* <form className={"form col-md-10 userHook"} onSubmit={readFormData}>                
                 <label>
                     <b>User Name :</b>
                     <input type="text" className={"form-control col-md-12"} ref={sessionName}
@@ -122,7 +124,7 @@ let UserHook = (props)=>{
                     </label>
                     <br/>
                 <input type="submit" className={"btn btn-primary"} value="Signin" />
-            </form> 
+            </form>  */}
 
 
         </>

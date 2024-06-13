@@ -15,12 +15,16 @@ import userReducer from "./User/userReducer";
 import hobbyReducer from "./User/hobbyReducer";
 import productReducer from "./Product/productReducer";
 import cartReducer from "./Cart/cartReducer";
+import couponReducer from "./Coupon/couponReducer";
+
 
 let rootReducer = combineReducers({
     userReducer, // userReducer: userReducer
     hobbyReducer,
     productReducer,
-    cartReducer
+    cartReducer,
+    couponReducer
+
 })
 
 // create or configure and export teh store from this code

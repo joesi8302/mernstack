@@ -10,6 +10,7 @@ let productSchema = new schemaObj({
     price : {type: Number, required : true},
     desc : {type: String, required : true},
     rating : {type: Number, required : true},
+    qty: {type: Number, default: 1},
 },
 {
     versionKey : false

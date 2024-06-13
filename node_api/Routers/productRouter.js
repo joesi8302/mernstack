@@ -1,18 +1,26 @@
 let express = require("express")
+let multer = require("multer")
+let cloudinary = require("../config/cloudinaryConfig")
 let productRouter = express.Router({})
 
+
 let ProductDataModel = require("../DataModels/ProductDataModel")
+
+const storage = multer.diskStorage({});
+const upload = multer({ storage });
+
 
 
 productRouter.post("/api/newproduct", (req, res) => {
     console.log(req.body)
 
-    ProductDataModel.findOne({prodName:req.body.prodName}).then((existingProduct)=>{
+    ProductDataModel.findOne({prodName:req.body.prodName}).then(async (existingProduct)=>{
         if(existingProduct){
             console.log("Product Already There", existingProduct);
             res.send(existingProduct)
         }
         else{
+
             let newProduct = new ProductDataModel(req.body);
             
             newProduct.save().then((newProduct) =>{
@@ -38,5 +46,7 @@ productRouter.get("/api/products", (req, res)=>{
         res.send("Error finding all products")
     })
 })
+
+
 
 module.exports = productRouter;

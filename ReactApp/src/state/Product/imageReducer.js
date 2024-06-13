@@ -1,13 +1,9 @@
 import * as actionType from "../actionTypes";
 
 let initialState = {
-    product : {
-        prodName : "Default name",
-        price: 123,
-        desc: "Default Description",
-        rating: 5,
-        category : "default",
-        image: "default Image Url"
+    image : {
+        imageUrl : "default url",
+        imageId : "default imageId"
     }
 }
 

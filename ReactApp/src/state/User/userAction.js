@@ -2,6 +2,7 @@
         // type:
         // payload:
 
+import { getUserCart } from "../Cart/cartAction";
 import * as actionTypes from "../actionTypes";
 import axios from "axios";
 
@@ -30,6 +31,7 @@ export const SaveUserToDB = (newUser)=>{
                 let loggedUser = collection.data
                 console.log(loggedUser)
                 dispatch(AddUserToStore(loggedUser))
+                
             }).catch((err)=>{
                 console.log("error while logging in ", err)
         })
@@ -66,6 +68,8 @@ export const SaveUserToDBUsingFetch = (newUser)=>{
             .then((userData)=>{
                 console.log(userData)
                 dispatch(AddUserToStore(userData))
+                console.log("getting cart for user: " + userData._id)
+                dispatch(getUserCart(userData._id))
             }).catch((err)=>{
                 console.log("error while logging in ", err)
         })

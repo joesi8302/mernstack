@@ -1,11 +1,6 @@
 import * as actionType from "../actionTypes"
 
-let initialState = {
-    cart : [
-        
-    ]
-
-}
+const initialState = [];
 
 
 // product = {
@@ -19,13 +14,26 @@ let initialState = {
  // initialState.cart.push(product)
 
  let cartReducer = (state = initialState, action) => {
-    console.log("Cart Actions " + action)
+    console.log("Cart Actions " + JSON.stringify(action))
 
     switch(action.type){
-        case actionType.ADD_CART_TO_STORE:
-            return {...state, cart : action.payload}
-        case actionType.ADD_PRODUCT_TO_CART:
-            return{...state, cart : [...state, action.payload]}
+        case actionType.ADD_ITEM:
+            return [...state, action.payload]
+
+        case actionType.REMOVE_ITEM:
+            return state.filter(product => product._id != action.payload.id)
+
+        case actionType.UPDATE_ITEM:
+            return state.map((product) => {
+                if(product._id == action.payload.id){
+                    return {...product, qty:action.payload.qty}
+                }
+                return product
+            })
+
+        case actionType.EMPTY_CART:
+            
+            return [];
         default:
             return state
     }

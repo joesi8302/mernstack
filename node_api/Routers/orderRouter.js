@@ -1,27 +1,27 @@
 let express = require("express")
-let cartRouter = express.Router({})
+let orderRouter = express.Router({})
 
-let CartDataModel = require('../DataModels/CartDataModel')
+let OrderDataModel = require("../DataModels/OrdersDataModel")
 
 
-cartRouter.post("/api/newcart", (req, res) => {
+orderRouter.post("/api/neworder", (req, res) => {
     console.log(req.body)
-    CartDataModel.findOne({userId: req.body.userId})
-        .then((cartDbObj) => {
-            if(!cartDbObj){
+    OrderDataModel.findOne({userId: req.body.userId})
+        .then((orderDbObj) => {
+            if(!orderDbObj){
 
-                let newCart = new CartDataModel(req.body);
-                newCart.save().then((newCart) =>{
-                    console.log("New Cart Added", newCart)
-                    res.send(newCart)
+                let newOrder = new OrderDataModel(req.body);
+                newOrder.save().then((newOrder) =>{
+                    console.log("New Cart Added", newOrder)
+                    res.send(newOrder)
                 }).catch((err1)=>{
                     console.log("err signup", err1);
-                    res.send("Error while adding new cart")
+                    res.send("Error while adding new order")
                 })
             }
             else{
-                cartDbObj.cart = req.body.cart;
-                cartDbObj.save()
+                orderDbObj.order = req.body.order;
+                orderDbObj.save()
                     .then((data)=>{        
                          setTimeout(()=>{
                             res.json(data);

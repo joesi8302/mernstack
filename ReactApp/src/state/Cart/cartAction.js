@@ -1,3 +1,4 @@
+import { act } from "react";
 import * as actionType from "../actionTypes";
 
 import axios from "axios";
@@ -10,9 +11,26 @@ export const AddCartToStore = (cart) => {
     }
 }
 
+export const emptyCart = () => ({
+    type: actionType.EMPTY_CART
+})
+
+export const updateItem = (id, qty) => ({
+    type: actionType.UPDATE_ITEM,
+    payload: {
+        id,
+        qty : parseInt(qty)
+    }
+})
+
+export const removeItem = (id) => ({
+    type: actionType.REMOVE_ITEM,
+    payload: { id }
+});
+
 export const AddToCart = (product) => {
     return {
-        type : actionType.ADD_PRODUCT_TO_CART,
+        type : actionType.ADD_ITEM,
         payload : product
     }
 }
@@ -24,9 +42,28 @@ export const SaveCartToDB = (newCart) => {
         ).then((collection) => {
             let savedCart = collection.data
             console.log(savedCart)
-            dispatch(AddCartToStore(savedCart))
         }).catch((err) => {
             console.log("Error while adding new cart", err)
         })
+    }
+}
+
+export const getUserCart = (userId) => {
+    return (dispatch) => {
+        axios.post("http://localhost:9000/cart/api/usercart",
+            {userId : userId}
+        ).then((collection) => {
+            let userCart = collection.data;
+
+            
+            console.log(userCart)
+            for(const item of userCart.cart){
+                let action = AddToCart(item)
+                dispatch(action)
+            }
+        }).catch((err) => {
+            console.log("Error grabbing user cart", err)
+        })
+        
     }
 }

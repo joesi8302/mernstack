@@ -12,8 +12,9 @@ import UserHook from "./Application/User/UserHookComponent";
 import HobbyContainer from "./Application/User/HobbyContainer";
 import HobbyHook from "./Application/User/HobbyHookComponent";
 import ProductHook from "./Application/Product/ProductHookComponent"
-import CartHook from "./Application/Cart/CartHookComponent";
+import ProductDisplayHook from "./Application/Product/ProductDisplayHookComponent";
 import CheckoutHook from "./Application/Cart/CheckoutComponent";
+import CouponComponent from "./Application/Coupon/CouponComponent";
 
 
 export default class ApplicationComponent extends Component{
@@ -91,8 +92,9 @@ export default class ApplicationComponent extends Component{
                     {/* <Route path="hobby" element={<HobbyContainer/>}/> */}
                     <Route path="hobby" element={<HobbyHook/>}/>
                     <Route path="product" element={<ProductHook/>}/>
-                    <Route path="products" element={<CartHook/>}/>
+                    <Route path="products" element={<ProductDisplayHook/>}/>
                     <Route path="checkout" element={<CheckoutHook/>}/>
+                    <Route path="coupon" element={<CouponComponent/>}/>
                     <Route path="about" element={<About />}/>
                     <Route path="about/:id" element={<About />}/>
                     <Route path="*" element={<NotFound />}/>                    
