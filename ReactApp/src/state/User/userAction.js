@@ -3,6 +3,7 @@
         // payload:
 
 import { getUserCart } from "../Cart/cartAction";
+import { GetUserOrders } from "../Orders/orderAction";
 import * as actionTypes from "../actionTypes";
 import axios from "axios";
 
@@ -70,6 +71,7 @@ export const SaveUserToDBUsingFetch = (newUser)=>{
                 dispatch(AddUserToStore(userData))
                 console.log("getting cart for user: " + userData._id)
                 dispatch(getUserCart(userData._id))
+                dispatch(GetUserOrders(userData._id))
             }).catch((err)=>{
                 console.log("error while logging in ", err)
         })

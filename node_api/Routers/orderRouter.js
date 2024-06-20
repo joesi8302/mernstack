@@ -5,14 +5,14 @@ let OrderDataModel = require("../DataModels/OrdersDataModel")
 
 
 orderRouter.post("/api/neworder", (req, res) => {
-    console.log(req.body)
+    console.log("Coming from order Router: " + req.body)
     OrderDataModel.findOne({userId: req.body.userId})
         .then((orderDbObj) => {
             if(!orderDbObj){
 
                 let newOrder = new OrderDataModel(req.body);
                 newOrder.save().then((newOrder) =>{
-                    console.log("New Cart Added", newOrder)
+                    console.log("New order Added", newOrder)
                     res.send(newOrder)
                 }).catch((err1)=>{
                     console.log("err signup", err1);
@@ -20,7 +20,7 @@ orderRouter.post("/api/neworder", (req, res) => {
                 })
             }
             else{
-                orderDbObj.order = req.body.order;
+                orderDbObj.orders = req.body.orders;
                 orderDbObj.save()
                     .then((data)=>{        
                          setTimeout(()=>{
@@ -39,16 +39,16 @@ orderRouter.post("/api/neworder", (req, res) => {
        
 })
 
-cartRouter.post("/api/usercart", (req, res)=>{
-    console.log("Getting User Cart: " + JSON.stringify(req.body))
-    CartDataModel.findOne({userId: req.body.userId })
-    .then((cart) =>{
-        console.log(JSON.stringify(cart))
-        res.json(cart)
+orderRouter.post("/api/userorders", (req, res)=>{
+    console.log("Getting User orders: " + JSON.stringify(req.body))
+    OrderDataModel.findOne({userId: req.body.userId })
+    .then((orders) =>{
+        console.log(JSON.stringify(orders))
+        res.json(orders)
     })
     .catch((err1)=>{
-        res.send("Error finding cart", err1)
+        res.send("Error finding orders", err1)
     })
 })
 
-module.exports = cartRouter;
+module.exports = orderRouter;

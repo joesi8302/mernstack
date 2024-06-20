@@ -14,7 +14,7 @@ const initialState = [];
  // initialState.cart.push(product)
 
  let cartReducer = (state = initialState, action) => {
-    console.log("Cart Actions " + JSON.stringify(action))
+    // console.log("Cart Actions " + JSON.stringify(action))
 
     switch(action.type){
         case actionType.ADD_ITEM:

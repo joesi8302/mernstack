@@ -11,6 +11,7 @@ const userRouter = require("./Routers/userRouter")
 const hobbyRouter = require("./Routers/HobbyRouter")
 const productRouter = require("./Routers/productRouter")
 const cartRouter = require("./Routers/cartRouter")
+const ordersRouter = require("./Routers/orderRouter")
 
 global.rootDir = __dirname;
 
@@ -20,6 +21,7 @@ const userApp = express();
 const hobbyApp = express();
 const productApp = express();
 const cartApp = express();
+const ordersApp = express();
 
 
 app.use(cors()) //enabling cross origin resource sharing at root level
@@ -47,6 +49,9 @@ productApp.use(productRouter)
 
 app.use("/cart", cartApp)
 cartApp.use(cartRouter)
+
+app.use("/orders", ordersApp)
+ordersApp.use(ordersRouter)
 
 
 app.use("/",defaultRouter)

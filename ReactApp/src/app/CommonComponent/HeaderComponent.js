@@ -1,12 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {useSelector} from "react-redux"; // replacement of mapStateToProps
+import NotificationHeaderComponent from "../Application/Notification/NotificationHeaderComponent";
 
 let Header = (props) =>{
 
     //allow us to read data from store/reducer as we do with mapStateToProps
 
     const user = useSelector((store)=>store.userReducer.user)
+    let notifications = useSelector((store) => store.notificationReducer.notifications)
     
     // console.log(user)
 
@@ -51,6 +53,8 @@ let Header = (props) =>{
                         <NavLink to="/product"  className="button" activeclassname="true"> Product </NavLink>
                         <NavLink to="/products"  className="button" activeclassname="true"> Products </NavLink>
                         <NavLink to="/coupon" className="button" activeclassname="true">Coupon</NavLink>
+                        <NavLink to="/orders" className="button" activeclassname="ture">Orders</NavLink>
+                        <NotificationHeaderComponent></NotificationHeaderComponent>
                     </Fragment>
                 }
                    

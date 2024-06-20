@@ -16,7 +16,15 @@ export const AddImageToStore = (image) => {
     }
 }
 
+export const AddReviewToProduct = (review) => {
+    return {
+        type: actionType.ADD_REVIEW_TO_PRODUCT,
+        payload : review
+    }
+}
+
 export const SaveProductToDB = (newProduct) => {
+    console.log("Saving/Updating new product: " + JSON.stringify(newProduct))
     return (dispatch) => {
         axios.post("http://localhost:9000/product/api/newproduct",
             newProduct
@@ -26,6 +34,20 @@ export const SaveProductToDB = (newProduct) => {
             dispatch(AddProductToStore(savedProduct))
         }).catch((err) => {
             console.log("Error while adding new product", err)
+        })
+    }
+}
+
+
+export const getProduct = (prodName) => {
+    return (dispatch) => {
+        axios.post("http://localhost:9000/product/api/product",
+            {prodName: prodName}
+        ).then((collection) => {
+            let retrievedProduct = collection.data;
+            dispatch(AddProductToStore(retrievedProduct))
+        }).catch((err) => {
+            console.log("Error while getting product", err)
         })
     }
 }

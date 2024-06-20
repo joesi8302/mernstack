@@ -15,6 +15,8 @@ import ProductHook from "./Application/Product/ProductHookComponent"
 import ProductDisplayHook from "./Application/Product/ProductDisplayHookComponent";
 import CheckoutHook from "./Application/Cart/CheckoutComponent";
 import CouponComponent from "./Application/Coupon/CouponComponent";
+import OrderHistoryComponent from "./Application/Orders/OrderHistoryComponent";
+import NotificationPageComponent from "./Application/Notification/NotificationPageComponent";
 
 
 export default class ApplicationComponent extends Component{
@@ -94,7 +96,9 @@ export default class ApplicationComponent extends Component{
                     <Route path="product" element={<ProductHook/>}/>
                     <Route path="products" element={<ProductDisplayHook/>}/>
                     <Route path="checkout" element={<CheckoutHook/>}/>
+                    <Route path="orders" element={<OrderHistoryComponent/>}/>
                     <Route path="coupon" element={<CouponComponent/>}/>
+                    <Route path="notifications" element={<NotificationPageComponent/>} className=""/>
                     <Route path="about" element={<About />}/>
                     <Route path="about/:id" element={<About />}/>
                     <Route path="*" element={<NotFound />}/>                    

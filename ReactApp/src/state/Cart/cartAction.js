@@ -2,6 +2,7 @@ import { act } from "react";
 import * as actionType from "../actionTypes";
 
 import axios from "axios";
+import { addOrderID } from "../Orders/orderAction";
 
 
 export const AddCartToStore = (cart) => {
@@ -57,6 +58,7 @@ export const getUserCart = (userId) => {
 
             
             console.log(userCart)
+            dispatch(addOrderID(userCart._id))
             for(const item of userCart.cart){
                 let action = AddToCart(item)
                 dispatch(action)

@@ -32,9 +32,7 @@ cartRouter.post("/api/newcart", (req, res) => {
                     })
             }
         })
-    
-    
-    
+
     
        
 })

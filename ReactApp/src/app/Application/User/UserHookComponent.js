@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SaveUserToDB, SaveUserToDBUsingFetch } from "../../../state/User/userAction";
+import { AddNotification } from "../../../state/Notification/notificationAction";
 import HobbyComponent from "./HobbyContainer";
 import { getUserCart } from "../../../state/Cart/cartAction";
 // useState - to create state for each option
@@ -12,12 +13,45 @@ let UserHook = (props)=>{
     //subscribe and read from userReducer using useSelector
     let User = useSelector((store)=>store.userReducer.user) //reads defined data in reducer 
 
+    let cart = useSelector((store) => store.cartReducer);
+
+    let notifications = useSelector((store)=> store.notificationReducer.notifications)
+
+    let [cartSize, setCartSize] = useState(cart.length)
+
     // initializes state and returns a callback which we can use to update the state
     let [uName, setUserName] = useState(User.userName) //user.userName - defined in userReducer 
     let [pass, setPassword] = useState(User.password)
     let [street, setStreet] = useState(User.street)
     let [mobile, setPhone] = useState(User.mobile) 
     // These useStates are a controlled implementation
+
+    //Default notifications
+    let productNotification = {
+        id : "1",
+        description : "You an add new Products!",
+        checked : false,
+        type: "product"
+    }
+    let productsNotification = {
+        id : "2",
+        description : "Check out our product selection and add them to your cart!",
+        checked : false,
+        type: "products"
+    }
+    let checkoutNotification = {
+        id : "3",
+        description : "",
+        checked : false,
+        type: "checkout"
+    }
+    let ordersNotification = {
+        id : "4",
+        description : "You and review, reorder, or cancel orders here!",
+        checked : false,
+        type: "orders"
+    }
+
 
     let onTextChange = (evt)=>{
         let val = evt.target.value
@@ -27,6 +61,17 @@ let UserHook = (props)=>{
 
     //this makes the component as publisher for the data back to store => dispatches 
     let dispatchToDB = useDispatch()
+
+    let addNotification = (newNotification) => {
+
+        
+            // newNotification.id = notifications.length+1;
+        dispatchToDB(AddNotification(newNotification))
+        
+        
+
+        
+    }
 
     let loginUser = (evt)=>{
         let newUser = {
@@ -38,6 +83,21 @@ let UserHook = (props)=>{
         //dispatchToDB(SaveUserToDB(newUser))
         dispatchToDB(SaveUserToDBUsingFetch(newUser))
 
+        
+        addNotification(productNotification);
+    
+    
+        addNotification(productsNotification);
+    
+    
+        addNotification(checkoutNotification);
+    
+    
+        addNotification(ordersNotification);
+
+        
+        
+        
         evt.preventDefault();
     }
 
@@ -65,7 +125,7 @@ let UserHook = (props)=>{
             //clear intervals, api subscription etc that should be removed before we move to next component
             console.log("Makes use effect to work for componentWillUnmount")
         }
-    },[]) //if we pass an object to initialize it works as componentDidMount, and executes in create Lifecyle, else works as shouldComponent Update
+    },[notifications]) //if we pass an object to initialize it works as componentDidMount, and executes in create Lifecyle, else works as shouldComponent Update
 
     let readFormData = (evt)=>{
         // alert(sessionName.current.value)

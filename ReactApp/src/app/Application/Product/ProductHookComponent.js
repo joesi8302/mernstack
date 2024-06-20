@@ -44,8 +44,8 @@ let ProductHook = (props) =>{
             price : pPrice.current.value ,
             desc : pDesc.current.value, 
             rating : pRating.current.value ,
-            category : pCategory.current.value,
-            image : pImage.current.value
+            qty: 1,
+            reviews: []
         }
 
         alert("New Product " + JSON.stringify(newProduct))
@@ -112,21 +112,13 @@ let ProductHook = (props) =>{
                         </select>
                 
                 </div>
+
+                <button type="submit">Add Product</button>
                 
                 <br/>
-                <label>
-                    <b>Product Image</b>
-                    <input type="file" className={"form-control col-md-12"} ref={pImage}/>
-                </label>
-                <button onClick={onDrop(pImage)}>Upload Image</button>
-                <br/>
-                <input type="submit" className={"btn btn-primary"} value="Add New Product" />
+                
             </form>
-                <label>
-                    <b>Product Image</b>
-                    <input type="file" className={"form-control col-md-12"} ref={pImage}/>
-                </label>
-                <button onClick={() => {onDrop(pImage)}}>Upload Image</button>
+                
         </>
     )
 }

@@ -10,6 +10,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import { SaveCartToDB, AddCartToStore, AddToCart, getUserCart } from "../../../state/Cart/cartAction";
+import { AddOrdersToDB, addToHistory } from "../../../state/Orders/orderAction"
 import CartItemComponent from "./CartItemComponent";
 import CartSummary from "./CartSummary";
 
@@ -18,7 +19,7 @@ let CheckoutHook = (props) => {
 
     let Cart = useSelector((store) => store.cartReducer);
     let User = useSelector((store) => store.userReducer.user);
-
+    let history = useSelector((store) => store.orderReducer);
 
     let [currentCart, setCart] = useState([])
     let [cartTotal, setCartTotal] = useState(0);
@@ -51,6 +52,37 @@ let CheckoutHook = (props) => {
             count
         }
     }
+
+    
+
+    
+
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth()+1;
+    let day = today.getDate();
+    
+    let fomattedDate = `${month}-${day}-${year}`
+
+    let submitOrder = () => {
+        let newOrder = {
+            userId : User._id,
+            orderId : history.orderId,
+            order : Cart,
+            date : fomattedDate,
+            status : "default"
+        }
+        dispatch(addToHistory(newOrder))
+
+
+        let orders = {
+            userId: User._id,
+            orders : history.orders
+        }
+        orders.orders.push(newOrder);
+
+        dispatch(AddOrdersToDB(orders))
+    }
         
     let checkout = (evt) => {
 
@@ -63,7 +95,7 @@ let CheckoutHook = (props) => {
         console.log(currentCart)
 
         // dispatch(AddCartToStore(newCart))
-
+        submitOrder();
         dispatch(SaveCartToDB(newCart))
 
         evt.preventDefault();
